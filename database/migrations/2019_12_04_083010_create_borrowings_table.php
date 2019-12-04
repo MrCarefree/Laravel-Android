@@ -15,6 +15,12 @@ class CreateBorrowingsTable extends Migration
     {
         Schema::create('borrowings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('book_id');
+            $table->unsignedInteger('member_id');
+            $table->unsignedInteger('librarian_id');
+            $table->date('tanggal_peminjaman');
+            $table->date('tanggal_pengembalian');
+            $table->enum('status', ['dipinjam', 'dikembalikan']);
             $table->timestamps();
         });
     }
